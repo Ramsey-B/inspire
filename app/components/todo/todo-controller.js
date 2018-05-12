@@ -18,7 +18,6 @@ function TodoController() {
 		//todos == array
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
-		console.log(todos)
 		var template = `
 		<form class="form-inline" onsubmit="app.controllers.todoController.addTodoFromForm(event)" id="add-todo">
 		<div class="form-group">
@@ -29,17 +28,22 @@ function TodoController() {
 		//DONT FORGET TO LOOP
 		for (let i = 0; i < todos.length; i++) {
 			const todo = todos[i];
+			if (todo.completed) {
 			template += `<form>
 			<div>
-				<input type="checkbox" id="complete-task" name="check-'${todo._id}'" onchange="app.controllers.todoController.toggleTodoStatus('${todo._id}')">
+				<input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus('${todo._id}')" checked>
 				<label for="complete-task">${todo.description}</label>
 				<button onclick="app.controllers.todoController.removeTodo('${todo._id}')">Delete</button>
 			</div>
 			</form>`
-			if (todo.completed){
-				document.getElementById("check-" +todo._id).checked = true;
 			} else {
-				document.getElementById("check-" +todo._id).checked = false;
+				template += `<form>
+			<div>
+				<input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus('${todo._id}')">
+				<label for="complete-task">${todo.description}</label>
+				<button onclick="app.controllers.todoController.removeTodo('${todo._id}')">Delete</button>
+			</div>
+			</form>`
 			}
 		}
 		document.getElementById('todo').innerHTML = template
@@ -56,19 +60,19 @@ function TodoController() {
 		//PASSES THE NEW TODO TO YOUR SERVICE
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
 		//YOU SHOULDN'T NEED TO CHANGE THIS
-		todoService.addTodo(todo, getTodos)
+		todoService.addTodo(todo, draw)
 		//^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
 	}
 
 	this.toggleTodoStatus = function (todoId) {
 		// asks the service to edit the todo status
-		todoService.toggleTodoStatus(todoId, getTodos)
+		todoService.toggleTodoStatus(todoId, draw)
 		// YEP THATS IT FOR ME
 	}
 
 	this.removeTodo = function (todoId) {
 		// ask the service to run the remove todo with this id
-		todoService.removeTodo(todoId, getTodos)
+		todoService.removeTodo(todoId, draw)
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}
 

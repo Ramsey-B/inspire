@@ -22,7 +22,8 @@ function TodoService() {
 		// WHAT IS THIS FOR???
 		$.post(baseUrl, todo)
 			.then(function(res){ // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
-				cb()
+				todoList.push(res.data)
+				cb(todoList)//reduces trips to api
 			}) 
 			.fail(logError)
 	}
@@ -53,19 +54,24 @@ function TodoService() {
 		})
 			.then(function (res) {
 				//DO YOU WANT TO DO ANYTHING WITH THIS?
-				cb()
+				cb(todoList)//again, draw used to reduce api visits
 			})
 			.fail(logError)
 	}
 
 	this.removeTodo = function (todoId, cb) {
-		// Umm this one is on you to write.... It's also unique, like the ajax call above. The method is a DELETE
+		// Umm this one is on you to write.... It's also unique, like the ajax call above. The method is a DELETe
+		for (let i = 0; i < todoList.length; i++) {
+			const item = todoList[i];
+			if (item._id == todoId) {
+				todoList.splice([i], 1)
+			}
+		}
 		$.ajax({
 			method: "DELETE",
-			url: baseUrl + '/' + todoId
-		}).then(res => {
-			cb()
-		})
+			url: baseUrl + '/' + todoId,
+			success: cb(todoList)//had strange errors with .then()
+		}).fail(logError)
 	}
 
 }
