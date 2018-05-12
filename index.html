@@ -16,7 +16,12 @@
 	</div>
 
 	<div id="todo">
-		<form onsubmit=""></form>
+		<form class="form-inline" onsubmit="app.controllers.todoController.addTodoFromForm(event)" id="add-todo">
+			<div class="form-group">
+				<input type="text" class="form-control" name="todo" placeholder="add todo" />
+				<button type="submit" class="btn btn-outline-primary" id="add-todo-btn">Add</button>
+			</div>
+		</form>
 		A Todo List
 	</div>
 
