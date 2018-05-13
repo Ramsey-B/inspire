@@ -13,6 +13,7 @@ function TodoService() {
 		$.get(baseUrl)
 			.then(function (res) { // <-- WHY IS THIS IMPORTANT????
 				todoList = res.data
+				console.log(res)
 				draw(res.data)
 			})
 			.fail(logError)

@@ -3,30 +3,32 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Inspire</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	 crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body id="body">
-	<div id="weather">
-		Your Weather Template
+	<div class="row">
+		<div id="weather" class="col-2 offset-10">
+		</div>
+	</div>
+	<div class="row clock-greet">
+		<div class="col text-center mt-5">
+			<canvas id="clock"></canvas>
+			<h3 id="greeting"></h3>
+		</div>
+
+	</div>
+	<div class="row">
+		<div id="quote" class="col-4 offset-4">
+		</div>
+		<div id="todo" class="col-3 offset-1">
+		</div>
 	</div>
 
-	<div id="quote">
-		The Quote
-	</div>
-
-	<div id="todo">
-		<form class="form-inline" onsubmit="app.controllers.todoController.addTodoFromForm(event)" id="add-todo">
-			<div class="form-group">
-				<input type="text" class="form-control" name="todo" placeholder="add todo" />
-				<button type="submit" class="btn btn-outline-primary" id="add-todo-btn">Add</button>
-			</div>
-		</form>
-		A Todo List
-	</div>
-	<div>
-		<canvas id="clock"></canvas>
-	</div>
 
 
 

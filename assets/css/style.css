@@ -1,4 +1,37 @@
+#body {
+    background-repeat: no-repeat;
+    width: 100%
+}
+
 #clock {
     width: 36vh;
     height: 12vh;
+}
+.completed {
+    color: red;
+}
+.incomplete {
+    color: white;
+}
+.delete {
+    padding: 0px 5px;
+}
+.weather {
+    color: white;
+}
+.author {
+    visibility: hidden;
+}
+#quote:hover .author{
+    visibility: visible;
+}
+#quote {
+    color: white;
+}
+#todo {
+    background:rgba(0,0,0,0.5);
+    border-radius: 15px;
+}
+.clock-greet {
+    height: 50vh;
 }

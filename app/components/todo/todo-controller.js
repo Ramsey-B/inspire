@@ -18,13 +18,7 @@ function TodoController() {
 		//todos == array
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
-		var template = `
-		<form class="form-inline" onsubmit="app.controllers.todoController.addTodoFromForm(event)" id="add-todo">
-		<div class="form-group">
-			<input type="text" class="form-control" name="todo" placeholder="add todo" />
-			<button type="submit" class="btn btn-outline-primary" id="add-todo-btn">Add</button>
-		</div>
-		</form>`
+		var template = ''
 		//DONT FORGET TO LOOP
 		for (let i = 0; i < todos.length; i++) {
 			const todo = todos[i];
@@ -32,21 +26,29 @@ function TodoController() {
 			template += `<form>
 			<div>
 				<input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus('${todo._id}')" checked>
-				<label for="complete-task">${todo.description}</label>
-				<button onclick="app.controllers.todoController.removeTodo('${todo._id}')">Delete</button>
+				<label for="complete-task" class="completed"><strike>${todo.description}</strike></label>
+				<button onclick="app.controllers.todoController.removeTodo('${todo._id}')" class="btn btn-outline-danger delete">X</button>
 			</div>
 			</form>`
 			} else {
 				template += `<form>
 			<div>
 				<input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus('${todo._id}')">
-				<label for="complete-task">${todo.description}</label>
-				<button onclick="app.controllers.todoController.removeTodo('${todo._id}')">Delete</button>
+				<label for="completed-task" class="incomplete">${todo.description}</label>
+				<button onclick="app.controllers.todoController.removeTodo('${todo._id}')" class="btn btn-outline-danger delete">X</button>
 			</div>
 			</form>`
 			}
 		}
+		template += `
+		<form class="form-inline" onsubmit="app.controllers.todoController.addTodoFromForm(event)" id="add-todo">
+		<div class="form-group">
+			<input type="text" class="form-control" name="todo" placeholder="add todo" />
+			<button type="submit" class="btn btn-outline-success" id="add-todo-btn">Add</button>
+		</div>
+		</form>`
 		document.getElementById('todo').innerHTML = template
+		document.getElementById('greeting').innerText = `Good Morning, Ramsey`
 	}
 
 	this.addTodoFromForm = function (e) {

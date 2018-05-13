@@ -37,14 +37,14 @@ function clock() {
     
     function changeMin(time) {
         if (time == 58) {
-            min2 = 00
+            min2 = 0
         } else if (time == 59) {
-            hourNext = 00
-            hour2 = 01
+            minNext = 0
+            min2 = 1
         } else if (time == 60) {
-            minCurrent = 00
+            minCurrent = 1
         } else if (time < 10) {
-            min = '0' + time
+            min = 0 + time
         }
     }
     changeHour(hour)
