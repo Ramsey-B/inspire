@@ -8,6 +8,8 @@
 #clock {
     width: 36vh;
     height: 12vh;
+    border: 2px solid yellow;
+    border-radius: 15px;
 }
 .completed {
     color: red;
@@ -45,4 +47,9 @@
 }
 #welcome-weather {
     color: white;
+}
+input[type=text] {
+    background:rgba(0,0,0,0.5);
+    color: white;
+    border: 2px solid white;
 }
