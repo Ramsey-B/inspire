@@ -14,7 +14,8 @@ function TodoController() {
 	// Use this getTodos function as your callback for all other edits
 	function getTodos() {
 		//FYI DONT EDIT ME :)
-		todoService.getTodos(draw)
+		debugger
+		todoService.getTodos(draw, name)
 	}
 
 	function drawGreet () {
@@ -72,7 +73,7 @@ function TodoController() {
 		//PASSES THE NEW TODO TO YOUR SERVICE
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
 		//YOU SHOULDN'T NEED TO CHANGE THIS
-		todoService.addTodo(todo, draw)
+		todoService.addTodo(todo, draw, name)
 		//^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
 	}
 
@@ -80,17 +81,18 @@ function TodoController() {
 		e.preventDefault()
 		name = e.target.user.value
 		drawGreet()
+		getTodos()
 	}
 
 	this.toggleTodoStatus = function (todoId) {
 		// asks the service to edit the todo status
-		todoService.toggleTodoStatus(todoId, draw)
+		todoService.toggleTodoStatus(todoId, draw, name)
 		// YEP THATS IT FOR ME
 	}
 
 	this.removeTodo = function (todoId) {
 		// ask the service to run the remove todo with this id
-		todoService.removeTodo(todoId, draw)
+		todoService.removeTodo(todoId, draw, name)
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}
 
