@@ -6,11 +6,11 @@ function ImageController() {
 		document.getElementById('body').style.backgroundImage = imgUrl
 	}
 	
-	function getImg() {
+	this.getImg = function getImg() {
 		imgService.getImage(drawImg)
 	}
 
-	getImg()
+	this.getImg()
 }
 
 

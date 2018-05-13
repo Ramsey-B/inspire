@@ -12,13 +12,24 @@
 
 <body id="body">
 	<div class="row">
-		<div id="weather" class="col-2 offset-10">
+		<div class="col-1">
+			<button class="btn btn-outline-primary" onclick="app.controllers.imageController.getImg()">Change</button>
+		</div>
+		<div id="weather" class="col-2 offset-9">
 		</div>
 	</div>
 	<div class="row clock-greet">
 		<div class="col text-center clock-container">
 			<canvas id="clock"></canvas>
-			<h3 id="greeting"></h3>
+			<div id="greeting">
+				<div class="d-flex justify-content-center">
+					<form class="form-inline" onsubmit="app.controllers.todoController.addName(event)" id="add-todo">
+						<div class="form-group">
+							<input type="text" class="form-control" name="user" placeholder="insert name" />
+						</div>
+					</form>
+				</div>
+			</div>
 			<p id="welcome-weather"></p>
 		</div>
 
@@ -41,16 +52,17 @@
 	<script src="app/components/image/image-service.js"></script>
 	<script src="app/components/quote/quote-service.js"></script>
 	<script src="app/components/todo/todo-service.js"></script>
+	<script src="app/components/clock/clock-service.js"></script>
 
 	<!--Controllers-->
 	<script src="app/components/weather/weather-controller.js"></script>
 	<script src="app/components/image/image-controller.js"></script>
 	<script src="app/components/quote/quote-controller.js"></script>
 	<script src="app/components/todo/todo-controller.js"></script>
+	<script src="app/components/clock/clock-controller.js"></script>
 
 	<!--Initialize App-->
 	<script src="app/init.js"></script>
-	<script src="app/components/clock/clock.js"></script>
 </body>
 
 </html>

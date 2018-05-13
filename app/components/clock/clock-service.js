@@ -1,4 +1,4 @@
-function clock() {
+function ClockService() {
     var date = new Date()
     var hour = date.getHours()
     var min = date.getMinutes()
@@ -68,4 +68,4 @@ function clock() {
     }
     updateClock()
 }
-setInterval(clock, 500)
+setInterval(ClockService, 500)

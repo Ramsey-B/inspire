@@ -7,11 +7,22 @@ function TodoController() {
 	// removeTodo takes in a todoId and sends a delete request to the server
 	// **** HINT: Everytime you make a change to any todo don't forget to get the todo list again
 	var todoService = new TodoService()
+	var name
+	var date = new Date()
+    var hour = date.getHours()
 
 	// Use this getTodos function as your callback for all other edits
 	function getTodos() {
 		//FYI DONT EDIT ME :)
 		todoService.getTodos(draw)
+	}
+
+	function drawGreet () {
+		if(hour < 12) {
+			document.getElementById('greeting').innerHTML = `<h3>Good Morning, ${name}</h3>`
+		} else {
+			document.getElementById('greeting').innerHTML = `<h3>Good Evening, ${name}</h3>`
+		}
 	}
 
 	function draw(todos) {
@@ -48,7 +59,6 @@ function TodoController() {
 		</div>
 		</form>`
 		document.getElementById('todo').innerHTML = template
-		document.getElementById('greeting').innerText = `Good Morning, Ramsey`
 	}
 
 	this.addTodoFromForm = function (e) {
@@ -64,6 +74,12 @@ function TodoController() {
 		//YOU SHOULDN'T NEED TO CHANGE THIS
 		todoService.addTodo(todo, draw)
 		//^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
+	}
+
+	this.addName = function (e) {
+		e.preventDefault()
+		name = e.target.user.value
+		drawGreet()
 	}
 
 	this.toggleTodoStatus = function (todoId) {
