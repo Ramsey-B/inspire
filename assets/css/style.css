@@ -33,5 +33,11 @@
     border-radius: 15px;
 }
 .clock-greet {
-    height: 50vh;
+    height: 40vh;
+}
+.clock-container {
+    margin: auto;
+}
+#greeting {
+    color: white;
 }
