@@ -7,22 +7,20 @@ function TodoController() {
 	// removeTodo takes in a todoId and sends a delete request to the server
 	// **** HINT: Everytime you make a change to any todo don't forget to get the todo list again
 	var todoService = new TodoService()
-	var name
 	var date = new Date()
     var hour = date.getHours()
 
 	// Use this getTodos function as your callback for all other edits
 	function getTodos() {
 		//FYI DONT EDIT ME :)
-		debugger
-		todoService.getTodos(draw, name)
+		todoService.getTodos(draw)
 	}
 
-	function drawGreet () {
+	function drawGreet (str) {
 		if(hour < 12) {
-			document.getElementById('greeting').innerHTML = `<h3>Good Morning, ${name}</h3>`
+			document.getElementById('greeting').innerHTML = `<h3>Good Morning, ${str}</h3>`
 		} else {
-			document.getElementById('greeting').innerHTML = `<h3>Good Evening, ${name}</h3>`
+			document.getElementById('greeting').innerHTML = `<h3>Good Evening, ${str}</h3>`
 		}
 	}
 
@@ -73,26 +71,27 @@ function TodoController() {
 		//PASSES THE NEW TODO TO YOUR SERVICE
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
 		//YOU SHOULDN'T NEED TO CHANGE THIS
-		todoService.addTodo(todo, draw, name)
+		todoService.addTodo(todo, draw)
 		//^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
 	}
 
 	this.addName = function (e) {
 		e.preventDefault()
 		name = e.target.user.value
-		drawGreet()
+		todoService.storeName(name)
+		drawGreet(name)
 		getTodos()
 	}
 
 	this.toggleTodoStatus = function (todoId) {
 		// asks the service to edit the todo status
-		todoService.toggleTodoStatus(todoId, draw, name)
+		todoService.toggleTodoStatus(todoId, draw)
 		// YEP THATS IT FOR ME
 	}
 
 	this.removeTodo = function (todoId) {
 		// ask the service to run the remove todo with this id
-		todoService.removeTodo(todoId, draw, name)
+		todoService.removeTodo(todoId, draw)
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}
 
