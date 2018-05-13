@@ -14,6 +14,7 @@ function WeatherController(){
 			<h4>${weather.name}</h4>
 		</div>`
 		document.getElementById('weather').innerHTML = template
+		document.getElementById('welcome-weather').innerText = `The Weather today is, ${weather.weather[0].description}`
 	})
 
 }

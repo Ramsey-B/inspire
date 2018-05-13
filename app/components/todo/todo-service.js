@@ -4,7 +4,7 @@ function TodoService() {
 	var baseUrl = 'https://bcw-sandbox.herokuapp.com/api/ramsey/todos'
 
 	function logError(err) {
-		console.error('UMM SOMETHING BROKE: ', err)
+		alert('Something went wrong! Try again!')
 		//CAN YOU NOTIFY THE USER IF SOMETHING BREAKS? 
 		//do this without breaking the controller/service responsibilities
 	}
@@ -13,7 +13,6 @@ function TodoService() {
 		$.get(baseUrl)
 			.then(function (res) { // <-- WHY IS THIS IMPORTANT????
 				todoList = res.data
-				console.log(res)
 				draw(res.data)
 			})
 			.fail(logError)

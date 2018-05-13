@@ -30,21 +30,17 @@ function clock() {
         } else if (time == 12) {
             hourNext = 1
             hour2 = 2
-        } else if (time == 0) {
-            hourCurrent = 12
         }
     }
-    
+
     function changeMin(time) {
         if (time == 58) {
-            min2 = 0
+            min2 = '00'
         } else if (time == 59) {
-            minNext = 0
-            min2 = 1
+            minNext = '00'
+            min2 = '01'
         } else if (time == 60) {
-            minCurrent = 1
-        } else if (time < 10) {
-            min = 0 + time
+            minCurrent = '01'
         }
     }
     changeHour(hour)
@@ -55,17 +51,29 @@ function clock() {
         var ctx = canvas.getContext("2d")
         ctx.clearRect(0, 0, 1000, 1000);
         ctx.font = "12vh Arial";
-        ctx.fillStyle= 'yellow'
+        ctx.fillStyle = 'yellow'
         ctx.fillText(hourCurrent, alignHour(hour), 110 + moveClock);
-        ctx.fillText(minCurrent, 140, 110 + moveMins)
-        ctx.fillStyle= 'white'
+        ctx.fillStyle = 'white'
         ctx.fillText(hourPrev, alignHour(hourPrev), 190 + moveClock)
         ctx.fillText(hourNext, alignHour(hourNext), 30 + moveClock)
         ctx.fillText(hour2, alignHour(hour2), -50 + moveClock)
-        ctx.fillText(minPrev, 140, 190 + moveMins)
-        ctx.fillText(minNext, 140, 30 + moveMins)
-        ctx.fillText(min2, 140, -50 + moveMins)
-        ctx.fillText(':', 110, 110)
+        if (min < 10) {
+            ctx.fillStyle = 'yellow'
+            ctx.fillText('0' + minCurrent, 140, 110 + moveMins)
+            ctx.fillStyle = 'white'
+            ctx.fillText('0' + minPrev, 140, 190 + moveMins)
+            ctx.fillText('0' + minNext, 140, 30 + moveMins)
+            ctx.fillText('0' + min2, 140, -50 + moveMins)
+            ctx.fillText(':', 110, 110)
+        } else {
+            ctx.fillStyle = 'yellow'
+            ctx.fillText(minCurrent, 140, 110 + moveMins)
+            ctx.fillStyle = 'white'
+            ctx.fillText(minPrev, 140, 190 + moveMins)
+            ctx.fillText(minNext, 140, 30 + moveMins)
+            ctx.fillText(min2, 140, -50 + moveMins)
+            ctx.fillText(':', 110, 110)
+        }
     }
     updateClock()
 }

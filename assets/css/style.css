@@ -1,6 +1,8 @@
 #body {
+    height: 100%; 
+    background-position: center;
     background-repeat: no-repeat;
-    width: 100%
+    background-size: cover;
 }
 
 #clock {
@@ -39,5 +41,8 @@
     margin: auto;
 }
 #greeting {
+    color: white;
+}
+#welcome-weather {
     color: white;
 }

@@ -27,7 +27,7 @@ function TodoController() {
 			<div>
 				<input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus('${todo._id}')" checked>
 				<label for="complete-task" class="completed"><strike>${todo.description}</strike></label>
-				<button onclick="app.controllers.todoController.removeTodo('${todo._id}')" class="btn btn-outline-danger delete">X</button>
+				<button onclick="app.controllers.todoController.removeTodo('${todo._id}')" class="btn btn-outline-danger delete"><i class="fas fa-times"></i></button>
 			</div>
 			</form>`
 			} else {
@@ -35,7 +35,7 @@ function TodoController() {
 			<div>
 				<input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus('${todo._id}')">
 				<label for="completed-task" class="incomplete">${todo.description}</label>
-				<button onclick="app.controllers.todoController.removeTodo('${todo._id}')" class="btn btn-outline-danger delete">X</button>
+				<button onclick="app.controllers.todoController.removeTodo('${todo._id}')" class="btn btn-outline-danger delete"><i class="fas fa-times"></i></button>
 			</div>
 			</form>`
 			}
