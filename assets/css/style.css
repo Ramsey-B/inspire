@@ -11,12 +11,7 @@
     border: 2px solid yellow;
     border-radius: 15px;
 }
-.completed {
-    color: red;
-}
-.incomplete {
-    color: white;
-}
+
 .delete {
     padding: 0px 5px;
 }

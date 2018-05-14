@@ -36,23 +36,13 @@ function TodoController() {
 		} else {
 			for (let i = 0; i < todos.length; i++) {
 				const todo = todos[i];
-				if (todo.completed) {
 				template += `<form>
 				<div>
-					<input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus('${todo._id}')" checked>
-					<label for="complete-task" class="completed"><strike>${todo.description}</strike></label>
+					<input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus('${todo._id}')" ${todo.completed ? "checked" : ""}>
+					<label for="complete-task" class="completed" style="color:${todo.completed ? "red" : "white"};">${todo.completed ? `<strike>` : ""}${todo.description}${todo.completed ? `</strike>` : ""}</label>
 					<button onclick="app.controllers.todoController.removeTodo('${todo._id}')" class="btn btn-outline-danger delete"><i class="fas fa-times"></i></button>
 				</div>
 				</form>`
-				} else {
-					template += `<form>
-				<div>
-					<input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus('${todo._id}')">
-					<label for="completed-task" class="incomplete">${todo.description}</label>
-					<button onclick="app.controllers.todoController.removeTodo('${todo._id}')" class="btn btn-outline-danger delete"><i class="fas fa-times"></i></button>
-				</div>
-				</form>`
-				}
 			}
 			template += `
 			<form class="form-inline" onsubmit="app.controllers.todoController.addTodoFromForm(event)" id="add-todo">
