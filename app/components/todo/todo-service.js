@@ -3,8 +3,8 @@ function TodoService() {
 	var todoList
 	var baseUrl = 'https://bcw-sandbox.herokuapp.com/api/'
 	var url2 = '/todos'
-	function logError(err) {
-		alert('Something went wrong! Try again!')
+	function logError(cb) {
+		cb('error')
 		//CAN YOU NOTIFY THE USER IF SOMETHING BREAKS? 
 		//do this without breaking the controller/service responsibilities
 	}
@@ -15,7 +15,7 @@ function TodoService() {
 				todoList = res.data
 				draw(res.data)
 			})
-			.fail(logError)
+			.fail(logError(draw))
 	}
 
 	this.addTodo = function (todo, cb, name) {
