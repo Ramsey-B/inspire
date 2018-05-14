@@ -10,8 +10,8 @@ function ClockService() {
     var sec = date.getSeconds()
     hour = hour % 12
     hour = hour ? hour : 12
-    var moveClock = min * (4 / 3)
-    var moveMins = sec * (4 / 3)
+    var moveClock = min * (1.5)
+    var moveMins = sec * (1.5)
     var hourCurrent = hour
     var hourPrev = hour - 1
     var hourNext = hour + 1
@@ -23,7 +23,7 @@ function ClockService() {
 
     function alignHour(time) {
         if (time > 9) {
-            return 10
+            return 5
         } else {
             return 60
         }
@@ -63,13 +63,13 @@ function ClockService() {
         ctx.fillText(minCurrent, 140, 110 + moveMins)
         ctx.fillStyle = 'white'
         //alternative times drawn to canvas
-        ctx.fillText(hourPrev, alignHour(hourPrev), 190 + moveClock)
-        ctx.fillText(hourNext, alignHour(hourNext), 30 + moveClock)
-        ctx.fillText(hour2, alignHour(hour2), -50 + moveClock)
-            ctx.fillText(minPrev, 140, 190 + moveMins)
-            ctx.fillText(minNext, 140, 30 + moveMins)
-            ctx.fillText(min2, 140, -50 + moveMins)
-            ctx.fillText(':', 110, 110)
+        ctx.fillText(hourPrev, alignHour(hourPrev), 200 + moveClock)
+        ctx.fillText(hourNext, alignHour(hourNext), 20 + moveClock)
+        ctx.fillText(hour2, alignHour(hour2), -70 + moveClock)
+            ctx.fillText(minPrev, 140, 200 + moveMins)
+            ctx.fillText(minNext, 140, 20 + moveMins)
+            ctx.fillText(min2, 140, -70 + moveMins)
+            ctx.fillText(':', 115, 110)
     }
     updateClock()
 }
