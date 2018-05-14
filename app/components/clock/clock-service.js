@@ -56,7 +56,7 @@ function ClockService() {
         var canvas = document.getElementById("clock");
         var ctx = canvas.getContext("2d")
         ctx.clearRect(0, 0, 1000, 1000);
-        ctx.font = "12vh Arial";
+        ctx.font = "12vh sans-serif";
         ctx.fillStyle = 'yellow'
         //current times drawn to canvas, makes them yellow to indicate current time
         ctx.fillText(hourCurrent, alignHour(hour), 110 + moveClock);

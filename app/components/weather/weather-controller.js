@@ -22,7 +22,7 @@ function WeatherController(){
 		celTemp = (kelTemp - 273).toFixed(2)
 		var template = `
 		<div class="weather">
-			<img src="http://openweathermap.org/img/w/${weather.weather[0].icon}.png">
+			<img src="https://openweathermap.org/img/w/${weather.weather[0].icon}.png">
 			<div id="temp">
 				<h3 onclick="app.controllers.weatherController.changeTemp('cel')">${farTemp}<span>&#8457;</span></h3>
 			</div>
