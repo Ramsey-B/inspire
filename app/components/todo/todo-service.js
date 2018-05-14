@@ -1,20 +1,16 @@
 function TodoService() {
 	// A local copy of your todos
 	var todoList
-	var user
-	var baseUrl = 'https://bcw-sandbox.herokuapp.com/api/'+user+'/todos'
+	var baseUrl = 'https://bcw-sandbox.herokuapp.com/api/'
+	var url2 = '/todos'
 	function logError(err) {
 		alert('Something went wrong! Try again!')
 		//CAN YOU NOTIFY THE USER IF SOMETHING BREAKS? 
 		//do this without breaking the controller/service responsibilities
 	}
 
-	this.storeName = function storeName(str) {
-		user = str
-	}
-
-	this.getTodos = function (draw) {
-		$.get(baseUrl)
+	this.getTodos = function (draw, name) {
+		$.get(baseUrl+name+url2)
 			.then(function (res) { // <-- WHY IS THIS IMPORTANT????
 				todoList = res.data
 				draw(res.data)
@@ -22,9 +18,9 @@ function TodoService() {
 			.fail(logError)
 	}
 
-	this.addTodo = function (todo, cb) {
+	this.addTodo = function (todo, cb, name) {
 		// WHAT IS THIS FOR???
-		$.post(baseUrl, todo)
+		$.post(baseUrl+name+url2, todo)
 			.then(function(res){ // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
 				todoList.push(res.data)
 				cb(todoList)//reduces trips to api
@@ -32,7 +28,7 @@ function TodoService() {
 			.fail(logError)
 	}
 
-	this.toggleTodoStatus = function (todoId,cb) {
+	this.toggleTodoStatus = function (todoId,cb,name) {
 		// MAKE SURE WE THINK THIS ONE THROUGH
 		//STEP 1: Find the todo by its index **HINT** todoList
 
@@ -53,7 +49,7 @@ function TodoService() {
 		$.ajax({
 			method: 'PUT',
 			contentType: 'application/json',
-			url: baseUrl+ '/' + todoId,
+			url: baseUrl+name+url2+ '/' + todoId,
 			data: JSON.stringify(toggleComplete)
 		})
 			.then(function (res) {
@@ -63,7 +59,7 @@ function TodoService() {
 			.fail(logError)
 	}
 
-	this.removeTodo = function (todoId, cb) {
+	this.removeTodo = function (todoId, cb, name) {
 		// Umm this one is on you to write.... It's also unique, like the ajax call above. The method is a DELETe
 		for (let i = 0; i < todoList.length; i++) {
 			const item = todoList[i];
@@ -73,7 +69,7 @@ function TodoService() {
 		}
 		$.ajax({
 			method: "DELETE",
-			url: baseUrl + '/' + todoId,
+			url: baseUrl+name+url2 + '/' + todoId,
 			success: cb(todoList)//had strange errors with .then(). no errors would occur but the delete would never go through. this way works but gives off a strange warning
 		}).fail(logError)
 	}
