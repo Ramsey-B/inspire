@@ -11,6 +11,6 @@ function ImageService() {
 		return $.get(apiUrl, function (res) {
 			res = JSON.parse(res)
 			callWhenDone(res)
-		}).fail(callWhenDone(defaultUrl))
+		}).fail(callWhenDone(defaultUrl))//this was my attempt to prevent blank screens but it only works sometimes. Sometimes it catches the error, but then is replaced by a blank screen and then the error pops up again
 	}
 }

@@ -77,7 +77,7 @@ function TodoController() {
 
 	this.addName = function (e) {
 		e.preventDefault()
-		name = e.target.user.value
+		var name = e.target.user.value
 		todoService.storeName(name)
 		drawGreet(name)
 		getTodos()
@@ -96,5 +96,5 @@ function TodoController() {
 	}
 
 	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
-	getTodos()
+	//removed call till user enters name to avoid api errors
 }

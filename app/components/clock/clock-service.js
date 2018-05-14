@@ -1,4 +1,9 @@
 function ClockService() {
+    //feedback on this part of my project would be appreciated. I wanted to do something more 
+    //challenging than just drawing a digital clock to the screen the screen, and I'm happy with the
+    //look and functionality of the clock I made. But keeping function seperated in our normal 
+    //service/controller encapsulation was a bit confusing since the function needs to be repeatedly called 
+    //and still have access to the updated time and position data.
     var date = new Date()
     var hour = date.getHours()
     var min = date.getMinutes()

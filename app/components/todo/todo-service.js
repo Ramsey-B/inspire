@@ -74,7 +74,7 @@ function TodoService() {
 		$.ajax({
 			method: "DELETE",
 			url: baseUrl + '/' + todoId,
-			success: cb(todoList)//had strange errors with .then()
+			success: cb(todoList)//had strange errors with .then(). no errors would occur but the delete would never go through. this way works but gives off a strange warning
 		}).fail(logError)
 	}
 
