@@ -29,6 +29,7 @@ function TodoController() {
 		//todos == array
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
+		var incompleteTodos = 0
 		var template = ''
 		//DONT FORGET TO LOOP
 		if (todos == 'error') {
@@ -36,6 +37,7 @@ function TodoController() {
 		} else {
 			for (let i = 0; i < todos.length; i++) {
 				const todo = todos[i];
+				todo.completed ? incompleteTodos + 0 : incompleteTodos++
 				template += `<form>
 				<div>
 					<input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus('${todo._id}')" ${todo.completed ? "checked" : ""}>
@@ -44,7 +46,7 @@ function TodoController() {
 				</div>
 				</form>`
 			}
-			template += `
+			template += `<p style="color: white;">${incompleteTodos} things to do</p>
 			<form class="form-inline" onsubmit="app.controllers.todoController.addTodoFromForm(event)" id="add-todo">
 			<div class="form-group">
 				<input type="text" class="form-control" name="todo" placeholder="add todo" />
