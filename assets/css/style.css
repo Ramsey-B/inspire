@@ -3,6 +3,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: grey;
 }
 
 #clock {
@@ -17,6 +18,8 @@
 }
 .weather {
     color: white;
+    text-shadow:
+    1px 1px 0 #000; 
 }
 .author {
     visibility: hidden;
@@ -26,6 +29,8 @@
 }
 #quote {
     color: white;
+    text-shadow:
+    1px 1px 0 #000; 
 }
 #todo {
     background:rgba(0,0,0,0.5);
@@ -39,12 +44,19 @@
 }
 #greeting {
     color: white;
+    text-shadow:
+    1px 1px 0 #000; 
 }
 #welcome-weather {
     color: white;
+    text-shadow:
+    -1px -1px 0 #000;
 }
 input[type=text] {
     background:rgba(0,0,0,0.5);
     color: white;
     border: 2px solid white;
+}
+canvas {
+    background:rgba(0,0,0,0.5);
 }
