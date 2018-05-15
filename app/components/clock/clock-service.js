@@ -31,7 +31,7 @@ function ClockService(cb) {
             }
         }
         function alignMin() {
-            return 140
+            return 150
         }
 
         function changeHour(time) {
