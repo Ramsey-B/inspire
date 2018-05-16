@@ -64,5 +64,5 @@ function ClockService(cb) {
         cb(hourPrev, hourCurrent, hourNext, hour2, moveHour, alignHour, ctx)
         cb(minPrev, minCurrent, minNext, min2, moveMins, alignMin, ctx)
     }
-    setInterval(moveClock, 500)
+    setInterval(moveClock, 1000)
 }
